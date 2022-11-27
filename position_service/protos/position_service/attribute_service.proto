@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package genproto;
+option go_package="genproto/position_service";
+
+import "attribute.proto";
+
+service AttributeService {
+    rpc Create(CreateAttribute) returns (AttributeId) {}
+    rpc Get(AttributeId) returns (Attribute) {}
+    rpc GetAll(GetAllAttributeRequest) returns (GetAllAttributeResponse) {}
+    rpc Update(Attribute) returns (UpdateAttribute) {}
+    rpc Delete(AttributeId) returns (UpdateAttribute) {}
+}

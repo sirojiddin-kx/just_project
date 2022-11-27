@@ -1,0 +1,84 @@
+syntax="proto3";
+
+package genproto;
+option go_package="genproto/position_service";
+
+import "attribute.proto";
+
+message PositionAttribute {
+    string attribute_id = 1;
+    string value = 2;
+}
+
+message PositionAttribute2 {
+    string id = 1;
+    string value = 3;
+}
+
+message GetPositionAttribute {
+    string id = 1;
+    string attribute_id = 2;
+    string position_id = 3;
+    string value = 4;
+    Attribute attribute = 5;
+}
+
+message Position {
+    string id = 1;
+    string name = 2;
+    string profession_id = 3;
+    string company_id = 4;
+    repeated GetPositionAttribute position_attributes = 5;
+}
+message CreatePositionRequest {
+    string name = 1;
+    string profession_id = 2;
+    string company_id = 3;
+    repeated PositionAttribute position_attributes = 4;
+}
+
+message PositionId {
+    string id = 1;
+}
+
+message GetAllPositionRequest {
+    uint32 limit = 1;
+    uint32 offset = 2;
+    string name = 3;
+    string profession_id = 4;
+    string company_id = 5;
+}
+
+message GetAllPositionResponse {
+    repeated Position positions = 1;
+    uint32 count = 2;
+}
+
+message UpdatePositionRequest {
+    string id = 1;
+    string name = 2;
+    string profession_id = 3;
+    string company_id = 4;
+    repeated PositionAttribute2 position_attribute = 5;
+    repeated Attribute attribute = 6;
+}
+
+message UpdatePosition {
+    string resp = 1;
+}
+
+// {
+//     "name": "Anvar",
+//     "profession_id": "Backend -> id",
+//     "company_id": "Udevs -> id",
+//     [
+//         {
+//             "attribute_id": "yoshi -> id",
+//             "value": "19"
+//         },
+//         {
+//             "attribute_id": "shaxar -> id",
+//             "value": "Toshkent"
+//         }
+//     ]
+// }

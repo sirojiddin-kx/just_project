@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package genproto;
+option go_package="genproto/position_service";
+
+import "profession.proto";
+
+service ProfessionService {
+    rpc Create(CreateProfession) returns (ProfessionId) {}
+    rpc Get(ProfessionId) returns (Profession) {}
+    rpc GetAll(GetAllProfessionRequest) returns (GetAllProfessionResponse) {}
+    rpc Update(Profession) returns (UpdateProfession) {}
+    rpc Delete(ProfessionId) returns (UpdateProfession) {}
+}

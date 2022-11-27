@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+   go_admin_api_gateway:
+      image: 90358ecc9541
+      network_mode: "host" 
+      restart: always
+      ports:
+         - 8090:8090
+      # environment:
+      #    - ENVIRONMENT=develop
+      #    - LOG_LEVEL=debug
+      #    - HTTP_PORT=8090
+      #    - POSITION_SERVICE_HOST=localhost
+      #    - POSITION_SERVICE_PORT=5004
+      #    - COMPANY_SERVICE_HOST=localhost
+      #    - COMPANY_SERVICE_PORT=5005
+
+   go_position_service:
+      image: 884d7cef12cc
+      network_mode: "host" 
+      restart: always
+      # environment:
+      #    - RPC_PORT=5004
+      #    - POSTGRES_HOST=localhost
+      #    - POSTGRES_PORT=5432
+      #    - POSTGRES_DATABASE=position_service
+      #    - POSTGRES_USER=proxima
+      #    - POSTGRES_PASSWORD=proxima_ops
+    
+   go_company_service:
+      image: 216567b12b97
+      network_mode: "host" 
+      restart: always
+      # environment:
+      #    - RPC_PORT=5005
+      #    - POSTGRES_HOST=localhost
+      #    - POSTGRES_PORT=5432
+      #    - POSTGRES_DATABASE=company_service
+      #    - POSTGRES_USER=proxima
+      #    - POSTGRES_PASSWORD=proxima_ops
+
+networks:
+   project:
+      external: true
+      name: host

@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package genproto;
+option go_package="genproto/position_service";
+
+import "position.proto";
+
+service PositionService {
+    rpc Create(CreatePositionRequest) returns (PositionId) {}
+    rpc Get(PositionId) returns (Position) {}
+    rpc GetAll(GetAllPositionRequest) returns (GetAllPositionResponse) {}
+    rpc Update(UpdatePositionRequest) returns (UpdatePosition) {}
+    rpc Delete(PositionId) returns (UpdatePosition) {}
+}
